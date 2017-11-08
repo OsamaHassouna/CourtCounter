@@ -22,11 +22,18 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeamA (int score){
 
         TextView scoreView = findViewById(R.id.scoreTeamA);
+        TextView scoreViewB = findViewById(R.id.scoreTeamB);
         scoreView.setText(String.valueOf(score));
 
         if (scoreTeamA > scoreTeamB){
             scoreView.setTextColor(Color.GREEN);
-        }else{
+            scoreViewB.setTextColor(Color.YELLOW);
+
+        } else if(scoreTeamA == scoreTeamB) {
+            scoreViewB.setTextColor(Color.GRAY);
+            scoreView.setTextColor(Color.GRAY);
+        }
+        else{
             scoreView.setTextColor(Color.YELLOW);
         }
     }
@@ -51,10 +58,17 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeamB (int score){
 
         TextView scoreView = findViewById(R.id.scoreTeamB);
+        TextView scoreViewA = findViewById(R.id.scoreTeamA);
         scoreView.setText(String.valueOf(score));
         if (scoreTeamB > scoreTeamA){
             scoreView.setTextColor(Color.GREEN);
-        }else{
+            scoreViewA.setTextColor(Color.YELLOW);
+        }
+        else if(scoreTeamA == scoreTeamB) {
+            scoreViewA.setTextColor(Color.GRAY);
+            scoreView.setTextColor(Color.GRAY);
+        }
+        else{
             scoreView.setTextColor(Color.YELLOW);
         }
     }
