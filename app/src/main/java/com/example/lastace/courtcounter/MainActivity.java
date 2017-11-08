@@ -1,5 +1,6 @@
 package com.example.lastace.courtcounter;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
     int scoreTeamA = 0;
     int scoreTeamB = 0;
@@ -19,8 +21,14 @@ public class MainActivity extends AppCompatActivity {
       */
     public void displayForTeamA (int score){
 
-        TextView scoreView=(TextView) findViewById(R.id.scoreTeamA);
+        TextView scoreView = findViewById(R.id.scoreTeamA);
         scoreView.setText(String.valueOf(score));
+
+        if (scoreTeamA > scoreTeamB){
+            scoreView.setTextColor(Color.GREEN);
+        }else{
+            scoreView.setTextColor(Color.YELLOW);
+        }
     }
     public void threePointsA (View v) {
         scoreTeamA = scoreTeamA + 3;
@@ -42,8 +50,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamB (int score){
 
-        TextView scoreView=(TextView) findViewById(R.id.scoreTeamB);
+        TextView scoreView = findViewById(R.id.scoreTeamB);
         scoreView.setText(String.valueOf(score));
+        if (scoreTeamB > scoreTeamA){
+            scoreView.setTextColor(Color.GREEN);
+        }else{
+            scoreView.setTextColor(Color.YELLOW);
+        }
     }
     public void threePointsB (View v) {
         scoreTeamB = scoreTeamB + 3;
@@ -67,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv_winner).setVisibility(View.INVISIBLE);
     }
     public void winner (View v){
-        TextView winnerTeam=(TextView) findViewById(R.id.tv_winner);
+        TextView winnerTeam = findViewById(R.id.tv_winner);
         if (scoreTeamB > scoreTeamA){
             winnerTeam.setText(R.string.teamB_wins);
             findViewById(R.id.tv_winner).setVisibility(View.VISIBLE);
